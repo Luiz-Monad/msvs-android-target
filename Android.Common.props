@@ -59,6 +59,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
          If the NDK version is less than 16.0, use the old sysroot path. -->
     <SysrootLink>$(VS_NdkRoot)\platforms\$(AndroidAPILevel)\arch-$(PlatformTarget)</SysrootLink>
     <Sysroot Condition="'$(NDKVersion)' != '' and '$(NDKVersion)' &lt; '16.0'">$(SysrootLink)</Sysroot>
+    <Sysroot Condition="'$(NDKVersion)' != '' and '$(NDKVersion)' &gt; '21.0'">$(LLVMToolchainPrebuiltRoot)\sysroot</Sysroot>
     <Sysroot Condition="'$(Sysroot)' == ''">$(VS_NdkRoot)\sysroot</Sysroot>
 
     <ExtensionsToDeleteOnClean Condition="'$(ExtensionsToDeleteOnClean)' == ''">*.d;*.tlog;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
@@ -149,6 +150,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       <PrecompiledHeaderOutputFile></PrecompiledHeaderOutputFile>
       <PrecompiledHeaderCompileAs>CompileAsCpp</PrecompiledHeaderCompileAs>
       <ISystem Condition="'$(NDKVersion)' != '' and '$(NDKVersion)' &gt;= '16.0'">$(VS_NdkRoot)\sysroot\usr\include\$(AndroidHeaderTriple)</ISystem>
+      <ISystem Condition="'$(NDKVersion)' != '' and '$(NDKVersion)' &gt; '21.0'">$(LLVMToolchainPrebuiltRoot)\sysroot\usr\include\$(AndroidHeaderTriple)</ISystem>
     </ClCompile>
     <Link>
       <ShowProgress>false</ShowProgress>

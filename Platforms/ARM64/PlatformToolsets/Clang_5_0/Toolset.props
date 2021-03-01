@@ -30,7 +30,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories Condition="'$(NDKVersion)' != '' and '$(NDKVersion)' &gt;= '16.0'">$(StlIncludeDirectories);$(Sysroot)\usr\include;$(Sysroot)\usr\include\$(AndroidHeaderTriple);$(VS_NdkRoot)\sources\android\support\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(NDKVersion)' != '' and '$(NDKVersion)' &gt;= '16.0' and '$(NDKVersion)' &lt; '22.0'">$(StlIncludeDirectories);$(Sysroot)\usr\include;$(Sysroot)\usr\include\$(AndroidHeaderTriple);$(VS_NdkRoot)\sources\android\support\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(NDKVersion)' != '' and '$(NDKVersion)' &lt; '16.0'">$(Sysroot)\usr\include;$(StlIncludeDirectories);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ThumbMode Condition="'$(ThumbMode)' != ''">$(ThumbMode)</ThumbMode>
       <EnableNeonCodegen>false</EnableNeonCodegen>
